@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: message-uploads-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /data/uploads # Папка внутри Minikube
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: message-uploads-pvc
+  namespace: messager
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi

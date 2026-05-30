@@ -1,0 +1,45 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: messager
+resources:
+  - ../../base
+patches:
+  - target:
+      kind: Deployment
+      name: frontend
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+  - target:
+      kind: Deployment
+      name: bff
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+  - target:
+      kind: Deployment
+      name: user-service
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+  - target:
+      kind: Deployment
+      name: message-service
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+images:
+  - name: mablinov2704/frontend
+    newTag: v1.0.0
+  - name: mablinov2704/bff
+    newTag: v1.0.0
+  - name: mablinov2704/user-service
+    newTag: v1.0.0
+  - name: mablinov2704/message-service
+    newTag: v1.0.0
+commonLabels:
+  environment: prod

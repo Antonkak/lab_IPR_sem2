@@ -1,0 +1,24 @@
+- op: replace
+  path: /spec/replicas
+  value: 2
+target:
+  kind: Deployment
+  name: frontend
+- op: replace
+  path: /spec/replicas
+  value: 2
+  target:
+    kind: Deployment
+    name: bff
+- op: replace
+  path: /spec/replicas
+  value: 2
+  target:
+    kind: Deployment
+    name: user-service
+- op: replace
+  path: /spec/replicas
+  value: 2
+  target:
+    kind: Deployment
+    name: message-service
