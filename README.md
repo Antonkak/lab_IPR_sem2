@@ -41,10 +41,12 @@ kubectl get svc -n messager # сервисы доступны
 Node affinity: postgres/minio на workload=system, прикладные на workload=app
 Argo CD: статус Synced/Healthy
 ## Особенности
+```
 S3 через CSI: message-service подключает MinIO через ch.ctrox.csi.s3-driver
 NodeAffinity:
 postgres/minio: required: workload=system
 message-service: required: workload=app + preferred: disk=fast
 frontend/bff/user-service: required: workload=app
 GitOps: Argo CD с automated/prune/selfHeal
-Kustomize: base + dev/prod с разными репликами, тегами, ресурсами
+Kustomize: base + dev/prod с разными репликами, тегами, ресурсами\
+```
